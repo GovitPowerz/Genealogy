@@ -100,3 +100,23 @@ export function buildGraph(data) {
     parentsOf, childrenOf, partnersOf, siblingsOf,
   };
 }
+
+// loadFamily is browser-only (fetch); covered by the Task 5 browser check, not by node tests.
+export async function loadFamily(url = "data/family.json") {
+  let response;
+  try {
+    response = await fetch(url);
+  } catch {
+    throw new Error("Impossible de charger les données de la famille (réseau indisponible).");
+  }
+  if (!response.ok) {
+    throw new Error(`Impossible de charger les données de la famille (HTTP ${response.status}).`);
+  }
+  let data;
+  try {
+    data = await response.json();
+  } catch {
+    throw new Error("Le fichier de données de la famille est invalide (JSON illisible).");
+  }
+  return { data, graph: buildGraph(data) };
+}
