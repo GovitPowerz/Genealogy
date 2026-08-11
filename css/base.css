@@ -208,3 +208,93 @@ footer a:hover { color: var(--accent); }
   #search { width: 150px; }
   #panel { width: 100vw; }
 }
+
+/* --- Panneau personne (Task 6) --- */
+.panel-close {
+  display: block;
+  margin-left: auto;
+  padding: 4px 10px;
+  border: 1px solid var(--line, #3a3f45);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-dim, #9aa0a6);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.panel-close:hover {
+  color: var(--text, #e8eaed);
+  border-color: var(--text-dim, #9aa0a6);
+}
+
+.panel-portrait,
+.initials {
+  width: 96px;
+  height: 96px;
+  margin: 8px auto 12px;
+  border-radius: 50%;
+}
+
+.panel-portrait {
+  display: block;
+  object-fit: cover;
+}
+
+.initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface, #26292e);
+  color: var(--text-dim, #9aa0a6);
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.panel-birthname,
+.panel-dates {
+  margin: 2px 0;
+  color: var(--text-dim, #9aa0a6);
+  font-size: 0.9rem;
+}
+
+.panel-birthname {
+  font-style: italic;
+}
+
+.panel-bio {
+  margin: 12px 0;
+  line-height: 1.5;
+}
+
+.panel-section {
+  margin-top: 16px;
+}
+
+.panel-section h3 {
+  margin: 0 0 6px;
+  color: var(--text-dim, #9aa0a6);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 4px 12px;
+  border: 1px solid var(--line, #3a3f45);
+  border-radius: 999px;
+  background: var(--surface, #26292e);
+  color: var(--text, #e8eaed);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.chip:hover {
+  background: var(--line, #3a3f45);
+}
