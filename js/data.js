@@ -57,9 +57,24 @@ export function buildGraph(data) {
   const siblingsOf = (id) => {
     const uid = parentUnionOf.get(id);
     if (uid === undefined) return [];
-    return unions.get(uid).children
-      .filter((cid) => cid !== id)
-      .map((cid) => persons.get(cid));
+    const seen = new Set();
+    for (const parentId of unions.get(uid).partners) {
+      for (const puid of unionsOf.get(parentId) || []) {
+        for (const cid of unions.get(puid).children) {
+          if (cid !== id) seen.add(cid);
+        }
+      }
+    }
+    return [...seen]
+      .map((cid) => persons.get(cid))
+      .sort((a, b) => {
+        const ya = yearOf(a.birth ? a.birth.date : null);
+        const yb = yearOf(b.birth ? b.birth.date : null);
+        if (ya === null && yb === null) return 0;
+        if (ya === null) return 1;
+        if (yb === null) return -1;
+        return ya - yb;
+      });
   };
 
   return {

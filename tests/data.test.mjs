@@ -95,3 +95,47 @@ test("siblingsOf returns co-children, self excluded", () => {
   assert.deepEqual(ids(graph.siblingsOf("claire")), ["denis"]);
   assert.deepEqual(graph.siblingsOf("abel"), []);
 });
+
+const REMARRIAGE = {
+  persons: [
+    person("paul"), person("jeanne"), person("sophie"),
+    person("marc", { birth: { date: "1970-03-02", place: null } }),
+    person("lea", { birth: { date: "1973-11", place: null } }),
+    person("anne", { birth: { date: "1975", place: null } }),
+    person("zoe"),
+  ],
+  unions: [
+    { id: "u-pj", partners: ["paul", "jeanne"], date: null, children: ["marc"] },
+    { id: "u-ps", partners: ["paul", "sophie"], date: null, children: ["anne", "lea", "zoe"] },
+  ],
+};
+
+test("siblingsOf includes half-siblings from any union of either parent", () => {
+  const graph = buildGraph(REMARRIAGE);
+  assert.deepEqual(ids(graph.siblingsOf("marc")), ["lea", "anne", "zoe"]);
+});
+
+test("siblingsOf sorts by birth year, unknown birth last", () => {
+  const graph = buildGraph(REMARRIAGE);
+  assert.deepEqual(ids(graph.siblingsOf("anne")), ["marc", "lea", "zoe"]);
+});
+
+const UNKNOWN_BIRTHS = {
+  persons: [
+    person("rene"), person("odette"),
+    person("gilles"),
+    person("marie", { birth: { date: "1960", place: null } }),
+    person("henri"),
+    person("luc", { birth: { date: "1958", place: null } }),
+  ],
+  unions: [
+    { id: "u-ro", partners: ["rene", "odette"], date: null, children: ["gilles", "marie", "henri", "luc"] },
+  ],
+};
+
+test("siblingsOf keeps two unknown-birth siblings, known births first", () => {
+  const graph = buildGraph(UNKNOWN_BIRTHS);
+  const sibs = ids(graph.siblingsOf("luc"));
+  assert.equal(sibs[0], "marie");
+  assert.deepEqual(sibs.slice(1).sort(), ["gilles", "henri"]);
+});
