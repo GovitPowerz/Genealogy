@@ -1,0 +1,71 @@
+/* Theme Hologramme - HUD sci-fi. All selectors scoped under body.theme-hologramme. */
+
+body.theme-hologramme,
+body.theme-hologramme #stage {
+  background: #04070d;
+}
+
+body.theme-hologramme .holo-caption {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  fill: #27e0ff;
+  letter-spacing: 3px;
+  opacity: 0.85;
+}
+
+body.theme-hologramme .holo-card {
+  cursor: pointer;
+}
+
+body.theme-hologramme .holo-hex {
+  fill: rgba(9, 30, 44, 0.85);
+  stroke: #27e0ff;
+  stroke-width: 1.2;
+  filter: url(#holo-glow);
+}
+
+body.theme-hologramme .holo-card:hover .holo-hex {
+  stroke: #b9f4ff;
+  filter: url(#holo-glow-strong);
+}
+
+body.theme-hologramme .holo-card:hover .holo-card-inner {
+  animation: holo-glitch 0.32s steps(2, jump-none) infinite;
+}
+
+body.theme-hologramme .holo-name {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  fill: #eafcff;
+}
+
+body.theme-hologramme .holo-years {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  fill: #7fdcff;
+}
+
+body.theme-hologramme .holo-link {
+  fill: none;
+  stroke: rgba(39, 224, 255, 0.35);
+  stroke-width: 1;
+}
+
+body.theme-hologramme .holo-union {
+  fill: #ff3df0;
+  filter: drop-shadow(0 0 3px #ff3df0);
+}
+
+body.theme-hologramme .holo-pulse-cyan {
+  fill: #27e0ff;
+}
+
+body.theme-hologramme .holo-pulse-magenta {
+  fill: #ff3df0;
+}
+
+@keyframes holo-glitch {
+  0% { opacity: 1; transform: translate(0, 0); }
+  20% { opacity: 0.6; transform: translate(1.5px, 0); }
+  40% { opacity: 1; transform: translate(-1.5px, 0.5px); }
+  60% { opacity: 0.75; transform: translate(0, -1px); }
+  80% { opacity: 1; transform: translate(-0.5px, 1px); }
+  100% { opacity: 0.85; transform: translate(1px, 0); }
+}
