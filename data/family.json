@@ -1,0 +1,236 @@
+{
+  "persons": [
+    {
+      "id": "henri-moreau",
+      "firstNames": "Henri",
+      "lastName": "Moreau",
+      "birthName": null,
+      "sex": "M",
+      "birth": {
+        "date": "1921-03-14",
+        "place": "Angers"
+      },
+      "death": {
+        "date": "1998-11-02",
+        "place": "Angers"
+      },
+      "photo": null,
+      "bio": "Menuisier à Angers pendant quarante ans. Il a construit lui-même la maison familiale de la rue des Lices."
+    },
+    {
+      "id": "jeanne-moreau",
+      "firstNames": "Jeanne",
+      "lastName": "Moreau",
+      "birthName": "Aubert",
+      "sex": "F",
+      "birth": {
+        "date": "1925-07-08",
+        "place": "Saumur"
+      },
+      "death": {
+        "date": "2010-04-21",
+        "place": "Angers"
+      },
+      "photo": null,
+      "bio": "Institutrice à Saumur puis à Angers. Réputée pour ses confitures de coing et sa mémoire infaillible des dates d'anniversaire."
+    },
+    {
+      "id": "pierre-moreau",
+      "firstNames": "Pierre",
+      "lastName": "Moreau",
+      "birthName": null,
+      "sex": "M",
+      "birth": {
+        "date": "1949-05-17",
+        "place": "Angers"
+      },
+      "death": null,
+      "photo": null,
+      "bio": "Ingénieur des travaux publics. A participé au chantier du pont de l'île de Ré avant de revenir s'installer en Anjou."
+    },
+    {
+      "id": "annie-lefevre",
+      "firstNames": "Annie",
+      "lastName": "Lefèvre",
+      "birthName": null,
+      "sex": "F",
+      "birth": {
+        "date": "1951-10-02",
+        "place": "Tours"
+      },
+      "death": null,
+      "photo": null,
+      "bio": null
+    },
+    {
+      "id": "sylvie-garnier",
+      "firstNames": "Sylvie",
+      "lastName": "Garnier",
+      "birthName": null,
+      "sex": "F",
+      "birth": {
+        "date": "1956-04-19",
+        "place": "Nantes"
+      },
+      "death": null,
+      "photo": null,
+      "bio": null
+    },
+    {
+      "id": "francoise-petit",
+      "firstNames": "Françoise",
+      "lastName": "Petit",
+      "birthName": "Moreau",
+      "sex": "F",
+      "birth": {
+        "date": "1953-09-30",
+        "place": "Angers"
+      },
+      "death": null,
+      "photo": null,
+      "bio": null
+    },
+    {
+      "id": "marc-petit",
+      "firstNames": "Marc",
+      "lastName": "Petit",
+      "birthName": null,
+      "sex": "M",
+      "birth": {
+        "date": "1950-01-25",
+        "place": "Cholet"
+      },
+      "death": null,
+      "photo": null,
+      "bio": null
+    },
+    {
+      "id": "claire-moreau",
+      "firstNames": "Claire",
+      "lastName": "Moreau",
+      "birthName": null,
+      "sex": "F",
+      "birth": {
+        "date": "1974-02-11",
+        "place": "Tours"
+      },
+      "death": null,
+      "photo": null,
+      "bio": "Libraire à Tours. C'est elle qui garde les albums photos et les archives de la famille."
+    },
+    {
+      "id": "julien-moreau",
+      "firstNames": "Julien",
+      "lastName": "Moreau",
+      "birthName": null,
+      "sex": "M",
+      "birth": {
+        "date": "1977",
+        "place": "Tours"
+      },
+      "death": null,
+      "photo": null,
+      "bio": null
+    },
+    {
+      "id": "thomas-moreau",
+      "firstNames": "Thomas",
+      "lastName": "Moreau",
+      "birthName": null,
+      "sex": "M",
+      "birth": {
+        "date": "1990-06",
+        "place": "Nantes"
+      },
+      "death": null,
+      "photo": null,
+      "bio": null
+    },
+    {
+      "id": "lucie-petit",
+      "firstNames": "Lucie",
+      "lastName": "Petit",
+      "birthName": null,
+      "sex": "F",
+      "birth": {
+        "date": "1979-12-03",
+        "place": "Angers"
+      },
+      "death": null,
+      "photo": null,
+      "bio": null
+    },
+    {
+      "id": "camille-lefevre",
+      "firstNames": "Camille",
+      "lastName": "Lefèvre",
+      "birthName": null,
+      "sex": null,
+      "birth": {
+        "date": "1984",
+        "place": "Tours"
+      },
+      "death": null,
+      "photo": null,
+      "bio": null
+    }
+  ],
+  "unions": [
+    {
+      "id": "u-henri-jeanne",
+      "partners": [
+        "henri-moreau",
+        "jeanne-moreau"
+      ],
+      "date": "1947-06-21",
+      "children": [
+        "pierre-moreau",
+        "francoise-petit"
+      ]
+    },
+    {
+      "id": "u-pierre-annie",
+      "partners": [
+        "pierre-moreau",
+        "annie-lefevre"
+      ],
+      "date": "1972",
+      "children": [
+        "claire-moreau",
+        "julien-moreau"
+      ]
+    },
+    {
+      "id": "u-pierre-sylvie",
+      "partners": [
+        "pierre-moreau",
+        "sylvie-garnier"
+      ],
+      "date": "1988-09",
+      "children": [
+        "thomas-moreau"
+      ]
+    },
+    {
+      "id": "u-francoise-marc",
+      "partners": [
+        "francoise-petit",
+        "marc-petit"
+      ],
+      "date": "1975",
+      "children": [
+        "lucie-petit"
+      ]
+    },
+    {
+      "id": "u-annie",
+      "partners": [
+        "annie-lefevre"
+      ],
+      "date": null,
+      "children": [
+        "camille-lefevre"
+      ]
+    }
+  ]
+}

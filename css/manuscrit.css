@@ -1,0 +1,45 @@
+/* Theme Manuscrit - tout est scope sous body.theme-manuscrit */
+
+body.theme-manuscrit {
+  background: #cdbb96;
+}
+
+body.theme-manuscrit #stage {
+  font-family: "Iowan Old Style", Georgia, serif;
+}
+
+body.theme-manuscrit .ms-person {
+  cursor: pointer;
+}
+
+body.theme-manuscrit .ms-person:hover {
+  filter: drop-shadow(0 0 3px #e9c46a) drop-shadow(0 0 8px #b08d3e);
+}
+
+body.theme-manuscrit .ms-name {
+  font-style: italic;
+  font-size: 14px;
+  fill: #3a2a18;
+  text-anchor: middle;
+}
+
+body.theme-manuscrit .ms-shield-name {
+  font-style: italic;
+  font-size: 13px;
+  fill: #3a2a18;
+  text-anchor: middle;
+}
+
+body.theme-manuscrit .ms-title {
+  font-family: "Luminari", "UnifrakturMaguntia", fantasy, serif;
+  font-size: 30px;
+  fill: #3a2a18;
+  text-anchor: middle;
+  letter-spacing: 1px;
+}
+
+body.theme-manuscrit .ms-lettrine {
+  font-family: "Luminari", "UnifrakturMaguntia", fantasy, serif;
+  fill: #7a1f1f;
+  font-size: 38px;
+}
