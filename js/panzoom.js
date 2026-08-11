@@ -82,6 +82,7 @@ export function createPanZoom(svg, opts = {}) {
   }
 
   function flyTo(x, y, scale = 1.2) {
+    if (svg.clientWidth === 0) return;
     stopAnim();
     const from = getViewBox();
     const w = clampedWidth(svg.clientWidth / scale);

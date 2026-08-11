@@ -323,7 +323,7 @@ export default {
     // Pas de canvas dans ce theme : on efface ce qu'un theme precedent a laisse.
     canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 
-    svg.innerHTML = "";
+    svg.replaceChildren();
     svg.setAttribute("viewBox", `0 0 ${PAGE_W} ${PAGE_H}`);
 
     buildDefs(svg);

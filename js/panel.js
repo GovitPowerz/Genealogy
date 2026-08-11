@@ -87,7 +87,7 @@ export function showPanel(personId, ctx) {
   if (person.birthName) {
     const born = document.createElement("p");
     born.className = "panel-birthname";
-    born.textContent = "née " + person.birthName;
+    born.textContent = (person.sex === "M" ? "né " : "née ") + person.birthName;
     panel.appendChild(born);
   }
 

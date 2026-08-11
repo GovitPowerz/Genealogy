@@ -28,7 +28,7 @@ export function buildHash({ theme, person }) {
 const state = {
   svg: null, canvas: null,
   graph: null, generations: null, layout: null, panZoom: null,
-  positions: new Map(), cleanup: null, themeId: null
+  positions: new Map(), cleanup: null, themeId: null, personId: null
 };
 
 function flyToPerson(id) {
@@ -53,11 +53,13 @@ function openPerson(id) {
     },
     onClose: closePanel
   });
+  state.personId = id;
   setHashPerson(id);
 }
 
 function closePanel() {
   hidePanel();
+  state.personId = null;
   setHashPerson(null);
 }
 
@@ -201,6 +203,15 @@ async function boot() {
   window.addEventListener("hashchange", () => {
     const next = parseHash(location.hash);
     if (next.theme && next.theme !== state.themeId) renderTheme(next.theme);
+    if (next.person !== state.personId) {
+      if (next.person) {
+        openPerson(next.person);
+        flyToPerson(next.person);
+      } else {
+        hidePanel();
+        state.personId = null;
+      }
+    }
   });
 
   state.svg.addEventListener("click", (event) => {
@@ -221,7 +232,7 @@ async function boot() {
 
   if (fromHash.person) {
     openPerson(fromHash.person);
-    flyToPerson(fromHash.person);
+    requestAnimationFrame(() => flyToPerson(fromHash.person));
   }
 }
 
