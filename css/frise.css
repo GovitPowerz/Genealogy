@@ -1,0 +1,65 @@
+body.theme-frise {
+  background: #f7f3ea;
+}
+
+body.theme-frise .frise-axis,
+body.theme-frise .frise-tick {
+  stroke: #6b6257;
+  stroke-width: 1.5;
+}
+
+body.theme-frise .frise-grid {
+  stroke: #6b6257;
+  stroke-width: 0.5;
+  opacity: 0.18;
+}
+
+body.theme-frise .frise-axis-label {
+  fill: #6b6257;
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+}
+
+body.theme-frise .frise-person {
+  cursor: pointer;
+}
+
+body.theme-frise .frise-person:hover rect {
+  filter: brightness(1.15);
+}
+
+body.theme-frise .frise-label {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+}
+
+body.theme-frise .frise-label-in {
+  fill: #ffffff;
+}
+
+body.theme-frise .frise-label-out {
+  fill: #3d3833;
+}
+
+body.theme-frise .frise-union {
+  stroke: #8a8178;
+  stroke-width: 2;
+  opacity: 0.85;
+}
+
+body.theme-frise .frise-union-dot {
+  fill: #8a8178;
+}
+
+body.theme-frise .frise-today {
+  stroke: #c0392b;
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+}
+
+body.theme-frise .frise-today-label {
+  fill: #c0392b;
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
