@@ -139,3 +139,34 @@ test("siblingsOf keeps two unknown-birth siblings, known births first", () => {
   assert.equal(sibs[0], "marie");
   assert.deepEqual(sibs.slice(1).sort(), ["gilles", "henri"]);
 });
+
+const DANGLING = {
+  persons: [person("paul"), person("marc")],
+  unions: [
+    { id: "u-1", partners: ["paul", "ghost"], date: null, children: ["marc", "fantome"] },
+    { id: "u-2", partners: ["esprit"], date: null, children: [] },
+  ],
+};
+
+test("buildGraph reports dangling refs with French warnings", () => {
+  const graph = buildGraph(DANGLING);
+  assert.deepEqual(graph.warnings, [
+    'Union "u-1" : partenaire inconnu "ghost", référence ignorée.',
+    'Union "u-1" : enfant inconnu "fantome", référence ignorée.',
+    'Union "u-2" : partenaire inconnu "esprit", référence ignorée.',
+    'Union "u-2" ignorée : aucun partenaire connu.',
+  ]);
+});
+
+test("dangling refs are dropped from the stored union without mutating input", () => {
+  const graph = buildGraph(DANGLING);
+  assert.deepEqual(graph.unions.get("u-1").partners, ["paul"]);
+  assert.deepEqual(graph.unions.get("u-1").children, ["marc"]);
+  assert.deepEqual(DANGLING.unions[0].partners, ["paul", "ghost"]);
+});
+
+test("a union whose partners all vanish is dropped entirely", () => {
+  const graph = buildGraph(DANGLING);
+  assert.equal(graph.unions.has("u-2"), false);
+  assert.equal(graph.unions.size, 1);
+});

@@ -20,8 +20,26 @@ export function formatDateFr(dateStr) {
 
 export function buildGraph(data) {
   const persons = new Map(data.persons.map((p) => [p.id, p]));
-  const unions = new Map(data.unions.map((u) => [u.id, u]));
   const warnings = [];
+
+  const unions = new Map();
+  for (const u of data.unions) {
+    const partners = u.partners.filter((pid) => {
+      if (persons.has(pid)) return true;
+      warnings.push(`Union "${u.id}" : partenaire inconnu "${pid}", référence ignorée.`);
+      return false;
+    });
+    const children = u.children.filter((cid) => {
+      if (persons.has(cid)) return true;
+      warnings.push(`Union "${u.id}" : enfant inconnu "${cid}", référence ignorée.`);
+      return false;
+    });
+    if (partners.length === 0) {
+      warnings.push(`Union "${u.id}" ignorée : aucun partenaire connu.`);
+      continue;
+    }
+    unions.set(u.id, { ...u, partners, children });
+  }
 
   const parentUnionOf = new Map();
   const unionsOf = new Map();
