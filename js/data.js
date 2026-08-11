@@ -17,3 +17,53 @@ export function formatDateFr(dateStr) {
   if (!day) return `${monthName} ${year}`;
   return `${Number(day)} ${monthName} ${year}`;
 }
+
+export function buildGraph(data) {
+  const persons = new Map(data.persons.map((p) => [p.id, p]));
+  const unions = new Map(data.unions.map((u) => [u.id, u]));
+  const warnings = [];
+
+  const parentUnionOf = new Map();
+  const unionsOf = new Map();
+  for (const u of unions.values()) {
+    for (const pid of u.partners) {
+      if (!unionsOf.has(pid)) unionsOf.set(pid, []);
+      unionsOf.get(pid).push(u.id);
+    }
+    for (const cid of u.children) parentUnionOf.set(cid, u.id);
+  }
+
+  const parentsOf = (id) => {
+    const uid = parentUnionOf.get(id);
+    if (uid === undefined) return [];
+    return unions.get(uid).partners.map((pid) => persons.get(pid));
+  };
+
+  const childrenOf = (id) => {
+    const uids = unionsOf.get(id) || [];
+    return uids
+      .flatMap((uid) => unions.get(uid).children)
+      .map((cid) => persons.get(cid));
+  };
+
+  const partnersOf = (id) => {
+    const uids = unionsOf.get(id) || [];
+    return uids
+      .flatMap((uid) => unions.get(uid).partners)
+      .filter((pid) => pid !== id)
+      .map((pid) => persons.get(pid));
+  };
+
+  const siblingsOf = (id) => {
+    const uid = parentUnionOf.get(id);
+    if (uid === undefined) return [];
+    return unions.get(uid).children
+      .filter((cid) => cid !== id)
+      .map((cid) => persons.get(cid));
+  };
+
+  return {
+    persons, unions, parentUnionOf, unionsOf, warnings,
+    parentsOf, childrenOf, partnersOf, siblingsOf,
+  };
+}
