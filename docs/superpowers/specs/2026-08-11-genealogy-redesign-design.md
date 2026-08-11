@@ -102,11 +102,14 @@ tools/
 
 ### Theme interface
 
-Each theme exports `{ id, label, render(stage, graph, layout) }` and draws
-its world into the SVG stage (plus optional background canvas). Themes tag
-person nodes with `data-person-id`; everything interactive (panel, search,
-fly-to, pan/zoom) is shared engine code. Adding a theme = one file + one
-registry line.
+Each theme's default export is `{ id, label, className, render(ctx) }`,
+where `ctx = { svg, canvas, graph, generations, layout }`. `render` draws
+the theme's world into the SVG stage (plus optional background canvas) and
+returns `{ positions, cleanup? }`: `positions` maps person id to stage
+coordinates for fly-to, `cleanup` (optional) tears down timers/listeners
+before the next theme renders. Themes tag person nodes with
+`data-person-id`; everything interactive (panel, search, fly-to, pan/zoom)
+is shared engine code. Adding a theme = one file + one registry line.
 
 ### Shared behavior
 
