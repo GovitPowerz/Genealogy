@@ -1,0 +1,92 @@
+/* Page contribution. Complement de css/base.css, tout est scope sous body.contribute-page. */
+body.contribute-page {
+  overflow: auto;
+  height: auto;
+  background: #f4f1ea;
+  color: #222;
+  font-family: system-ui, sans-serif;
+}
+.contribute-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.contribute-header h1 { font-size: 1.4rem; margin: 0; }
+.contribute-header a { color: #1a4d8f; }
+.contribute-main { max-width: 640px; margin: 0 auto; padding: 0 1rem 4rem; }
+.contribute-page .intro { color: #555; }
+.contribute-page fieldset {
+  border: 1px solid #c9c2b4;
+  border-radius: 6px;
+  margin: 0 0 1rem;
+  padding: 0.75rem 1rem 1rem;
+  background: #fff;
+}
+.contribute-page legend { font-weight: 600; padding: 0 0.4rem; }
+.contribute-page label { display: block; margin-top: 0.6rem; font-size: 0.95rem; }
+#fs-mode label { display: inline-flex; align-items: center; gap: 0.4rem; margin-right: 1.2rem; }
+.contribute-page label.checkbox { display: flex; align-items: center; gap: 0.4rem; }
+.contribute-page input[type="text"],
+.contribute-page select,
+.contribute-page textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.2rem;
+  padding: 0.4rem;
+  border: 1px solid #b5ad9d;
+  border-radius: 4px;
+  font: inherit;
+  background: #fff;
+}
+.contribute-page input[type="radio"],
+.contribute-page input[type="checkbox"] { display: inline-block; width: auto; }
+.contribute-page .hint { margin: 0.2rem 0 0; font-size: 0.8rem; color: #777; }
+#person-results {
+  list-style: none;
+  margin: 0.3rem 0 0;
+  padding: 0;
+  border: 1px solid #b5ad9d;
+  border-radius: 4px;
+  background: #fff;
+  max-height: 12rem;
+  overflow-y: auto;
+}
+#person-results li { padding: 0.35rem 0.6rem; cursor: pointer; }
+#person-results li:hover { background: #e8eef7; }
+#person-selected { margin: 0.4rem 0 0; font-size: 0.9rem; color: #1c6b30; }
+.contribute-page .errors {
+  border: 1px solid #b3261e;
+  background: #fbeae9;
+  color: #7a1712;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+}
+.contribute-page .errors p { margin: 0.2rem 0; }
+#generate-btn, #copy-btn, #mailto-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid #1a4d8f;
+  border-radius: 4px;
+  background: #1a4d8f;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+#copy-btn { background: #fff; color: #1a4d8f; }
+#result { margin-top: 1.5rem; }
+#json-preview {
+  background: #2b2b2b;
+  color: #e8e6e3;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+#result .actions { display: flex; align-items: center; gap: 0.8rem; margin-top: 0.6rem; flex-wrap: wrap; }
+#copy-status { font-size: 0.9rem; color: #1c6b30; }

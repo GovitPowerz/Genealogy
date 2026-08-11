@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Participer - Généalogie de la famille</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/contribute.css">
+</head>
+<body class="contribute-page">
+  <header class="contribute-header">
+    <h1>Participer à la généalogie</h1>
+    <a href="index.html">Retour à l'arbre</a>
+  </header>
+  <main class="contribute-main">
+    <p class="intro">Proposez un ajout ou une correction. Votre contribution est envoyée par e-mail puis intégrée manuellement au site.</p>
+    <form id="contribute-form" novalidate>
+      <fieldset id="fs-mode">
+        <legend>Que souhaitez-vous faire ?</legend>
+        <label><input type="radio" name="mode" value="ajout-personne" checked> Ajouter une personne</label>
+        <label><input type="radio" name="mode" value="correction-personne"> Corriger une fiche</label>
+        <label><input type="radio" name="mode" value="union"> Ajouter ou corriger une union</label>
+        <label><input type="radio" name="mode" value="remarque"> Autre remarque</label>
+      </fieldset>
+
+      <fieldset id="fs-picker" hidden>
+        <legend>Personne à corriger</legend>
+        <label>Rechercher la personne
+          <input type="text" id="person-search" placeholder="Prénom ou nom" autocomplete="off">
+        </label>
+        <ul id="person-results" hidden></ul>
+        <p id="person-selected"></p>
+      </fieldset>
+
+      <fieldset id="fs-person">
+        <legend>Fiche de la personne</legend>
+        <label>Prénoms *<input type="text" id="f-firstNames"></label>
+        <label>Nom *<input type="text" id="f-lastName"></label>
+        <label>Nom de naissance<input type="text" id="f-birthName"></label>
+        <label>Sexe
+          <select id="f-sex">
+            <option value="">Inconnu</option>
+            <option value="M">Homme</option>
+            <option value="F">Femme</option>
+          </select>
+        </label>
+        <label>Date de naissance<input type="text" id="f-birthDate" placeholder="AAAA-MM-JJ"></label>
+        <p class="hint">AAAA ou AAAA-MM suffisent si le jour est inconnu.</p>
+        <label>Lieu de naissance<input type="text" id="f-birthPlace"></label>
+        <label>Date de décès<input type="text" id="f-deathDate" placeholder="AAAA-MM-JJ"></label>
+        <label>Lieu de décès<input type="text" id="f-deathPlace"></label>
+        <label>Biographie<textarea id="f-bio" rows="4"></textarea></label>
+      </fieldset>
+
+      <fieldset id="fs-ajout-extra">
+        <legend>Parents et photo</legend>
+        <label>Union des parents (si elle existe déjà)
+          <select id="f-parentUnion"><option value="">-- Aucune --</option></select>
+        </label>
+        <label>Ou parent 1<select id="f-parent1"><option value="">-- Aucun --</option></select></label>
+        <label>Et parent 2<select id="f-parent2"><option value="">-- Aucun --</option></select></label>
+        <label class="checkbox"><input type="checkbox" id="f-photoPromised"> J'enverrai une photo par e-mail</label>
+      </fieldset>
+
+      <fieldset id="fs-union" hidden>
+        <legend>Union</legend>
+        <label>Partenaire 1 *<select id="f-partner1"><option value="">-- Choisir --</option></select></label>
+        <label>Partenaire 2<select id="f-partner2"><option value="">-- Aucun --</option></select></label>
+        <label>Date de l'union<input type="text" id="f-unionDate" placeholder="AAAA-MM-JJ"></label>
+        <label>Enfants (Ctrl-clic pour en choisir plusieurs)
+          <select id="f-children" multiple size="6"></select>
+        </label>
+      </fieldset>
+
+      <fieldset id="fs-common">
+        <legend>Votre message</legend>
+        <label>Votre nom *<input type="text" id="f-submitterName"></label>
+        <label>Note libre<textarea id="f-note" rows="3"></textarea></label>
+      </fieldset>
+
+      <div id="form-errors" class="errors" hidden></div>
+      <button type="submit" id="generate-btn">Générer la contribution</button>
+    </form>
+
+    <section id="result" hidden>
+      <h2>Votre contribution</h2>
+      <pre id="json-preview"></pre>
+      <div class="actions">
+        <a id="mailto-link" href="#">Envoyer par e-mail</a>
+        <button type="button" id="copy-btn">Copier le texte</button>
+        <span id="copy-status" role="status"></span>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="js/contribute.js"></script>
+</body>
+</html>
